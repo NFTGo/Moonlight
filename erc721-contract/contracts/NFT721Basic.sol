@@ -1,9 +1,9 @@
 pragma solidity ^0.8.4;
 
 import "./utils/ERC165.sol";
-import "./ERC721.sol";
-import "./ERC721TokenReceiver.sol";
-import "./ERC721Metadata.sol";
+import "./IERC721.sol";
+import "./IERC721TokenReceiver.sol";
+import "./IERC721Metadata.sol";
 import "./utils/support-interface.sol";
 import "./utils/address.sol";
 import "./utils/safe-math.sol";
@@ -18,7 +18,7 @@ contract NFT721Basic is
     SupportsInterface
 {
     using SafeMath for uint256;
-    using AddressUtils for address;
+    using Address for address;
 
     /**
      * @dev Magic value of a smart contract that can recieve NFT.
@@ -519,13 +519,12 @@ contract NFT721Basic is
         _transfer(_to, _tokenId);
 
         if (_to.isContract()) {
-            bytes4 retval =
-                ERC721TokenReceiver(_to).onERC721Received(
-                    msg.sender,
-                    _from,
-                    _tokenId,
-                    _data
-                );
+            bytes4 retval = ERC721TokenReceiver(_to).onERC721Received(
+                msg.sender,
+                _from,
+                _tokenId,
+                _data
+            );
             require(
                 retval == MAGIC_ON_ERC721_RECEIVED,
                 "not able to receive nft"

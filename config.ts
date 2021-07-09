@@ -1,5 +1,6 @@
 export const WEB3_ENDPOINT = process.env.ENDPOINT || '';
 export const ERC721_CONTRACT = process.env.ERC721_CONTRACT || '';
+export const ERC1155_CONTRACT = process.env.ERC721_CONTRACT || '';
 export const PRIVATE_KEY = process.env.PRIVATE_KEY || '';
 
 export const PINATA_API_KEY = '';

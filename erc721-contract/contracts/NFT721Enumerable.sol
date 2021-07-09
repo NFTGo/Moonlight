@@ -1,7 +1,7 @@
 pragma solidity ^0.8.4;
 
 import "./NFT721Basic.sol";
-import "./ERC721Enumerable.sol";
+import "./IERC721Enumerable.sol";
 
 /**
  * @dev Optional enumeration implementation for ERC-721 non-fungible token standard.
